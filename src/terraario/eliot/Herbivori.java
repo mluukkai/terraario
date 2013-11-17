@@ -10,6 +10,12 @@ public class Herbivori extends Elio {
         super(sijainti, paino);
     }
 
+    public void syo(Elio elio) {
+        this.setPaino(this.getPaino()+elio.getPaino() / 3);
+        elio.setPaino(0);
+    }
+
+    
     @Override
     public void elele(Maailma maailma) {
         if (getPaino() <= 0) {

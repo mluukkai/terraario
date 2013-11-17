@@ -18,11 +18,6 @@ public abstract class Elio {
 
     public abstract Color getColor();
 
-    public void syo(Elio elio) {
-        this.paino += elio.getPaino() / 3;
-        elio.setPaino(0);
-    }
-
     public double getPaino() {
         return paino;
     }
