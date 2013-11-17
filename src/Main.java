@@ -1,35 +1,37 @@
 
-import terraario.Ohjain;
+import terraario.Terrario;
 
 public class Main {
 
     public static void main(String[] args) {
-        Ohjain.kaynnista(800, 600, 5);
+        Jumala jumala = new Jumala();
 
-        Ohjain.kasvi();
-        Ohjain.kasvi();
-        Ohjain.kasvi();
+        Terrario.kaynnista(800, 600, 5);
+
+        Terrario.lisaa(jumala.luoKasvi());
+        Terrario.lisaa(jumala.luoKasvi());
+        Terrario.lisaa(jumala.luoKasvi());
 
         for (int i = 0; i < 100; i++) {
-            Ohjain.elele();
+            Terrario.elele();
         }
 
-        Ohjain.herbivori();
+        Terrario.lisaa(jumala.luoKasvissyoja());
 
         while (true) {
             if (Math.random() < 0.05) {
-                Ohjain.kasvi();
+                Terrario.lisaa(jumala.luoKasvi());
             }
 
             if (Math.random() < 0.01) {
-                Ohjain.herbivori();
+                Terrario.lisaa(jumala.luoKasvissyoja());
             }
 
             if (Math.random() < 0.01) {
-                Ohjain.carnivore();
+                Terrario.lisaa(jumala.luoLihansyoja());
             }
 
-            Ohjain.elele();
+            Terrario.elele();
 
         }
 
