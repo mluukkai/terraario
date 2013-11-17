@@ -1,27 +1,22 @@
 package terraario;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import terraario.grafiikka.Ikkuna;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import terraario.eliot.Carnivore;
 import terraario.eliot.Elio;
-import terraario.eliot.Herbivori;
 import terraario.eliot.Kasvi;
-import terraario.Maailma;
-import terraario.Piste;
 
-public class Terrario {
+public class Terraario {
 
     private final Maailma maailma;
     private final Ikkuna ikkuna;
     private final int odotusaika;
 
-    private static Terrario ohjain;
+    private static Terraario ohjain;
 
-    private Terrario(Maailma maailma, Ikkuna ikkuna, int odotusaika) {
+    private Terraario(Maailma maailma, Ikkuna ikkuna, int odotusaika) {
         this.maailma = maailma;
         this.ikkuna = ikkuna;
         this.odotusaika = odotusaika;
@@ -32,20 +27,12 @@ public class Terrario {
             virheKaynnissa();
             return;
         }
-
-        Random arpa = new Random();
-
-        List<Elio> eliot = new ArrayList<Elio>();
-        eliot.add(new Kasvi(new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 1 + arpa.nextInt(10)));
-        eliot.add(new Kasvi(new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 1 + arpa.nextInt(10)));
-        eliot.add(new Kasvi(new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 1 + arpa.nextInt(10)));
-        eliot.add(new Kasvi(new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 1 + arpa.nextInt(10)));
-
-        Maailma maailma = new Maailma(eliot, maailmanLeveys, maailmanKorkeus);
+        
+        Maailma maailma = new Maailma(new ArrayList<Elio>(), maailmanLeveys, maailmanKorkeus);
         Ikkuna ikkuna = new Ikkuna(maailma);
         SwingUtilities.invokeLater(ikkuna);
 
-        ohjain = new Terrario(maailma, ikkuna, odotusMillisekunteina);
+        ohjain = new Terraario(maailma, ikkuna, odotusMillisekunteina);
 
         odota();
     }
@@ -74,23 +61,23 @@ public class Terrario {
 
         odota();
     }
-    
-    public static void lisaa(Elio elio){
+
+    public static void lisaa(Elio elio) {
         if (ohjain == null) {
             virheEiKaynnissa();
             return;
         }
-        
+
         ohjain.maailma.getEliot().add(elio);
-        odota();       
+        odota();
     }
-    
+
     public static void elele() {
         if (ohjain == null) {
             virheEiKaynnissa();
             return;
         }
-        
+
         ohjain.maailma.elele();
 
         odota();
@@ -119,11 +106,11 @@ public class Terrario {
 
     private static void virheEiKaynnissa() {
         JOptionPane.showMessageDialog(null,
-                "Ohjain pitää ensin käynnistää! Käytä aluksi komentoa \"Ohjain.kaynnista();\".");
+                "Ohjain pitää ensin käynnistää! Käytä aluksi komentoa \"Terraario.kaynnista();\".");
     }
 
     private static void virheKaynnissa() {
         JOptionPane.showMessageDialog(null,
-                "Ohjain on jo käynnissä!");
+                "Terraario on jo käynnissä!");
     }
 }

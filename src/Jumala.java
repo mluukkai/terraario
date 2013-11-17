@@ -7,17 +7,31 @@ import terraario.eliot.Herbivori;
 import terraario.eliot.Kasvi;
 
 public class Jumala {
-    Random arpa = new Random();
-        
-    public Elio luoLihansyoja(){
-        return new Carnivore( new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 8 + arpa.nextInt(10) );
-    } 
-   
-    public Elio luoKasvissyoja(){
-        return new Herbivori(new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 1 + arpa.nextInt(10));
+
+    private int maailmanLeveys;
+    private int maailmanKorkeus;
+    private Random arpa;
+
+    public Jumala(int maailmanLeveys, int maailmanKorkeus) {
+        this.maailmanLeveys = maailmanLeveys;
+        this.maailmanKorkeus = maailmanKorkeus;
+        arpa = new Random();
     }
-    
-    public Elio luoKasvi(){
-        return new Kasvi(new Piste(arpa.nextInt(350) + 10, arpa.nextInt(350) + 10), 1 + arpa.nextInt(10));
+
+    public Elio luoLihansyoja() {
+        return new Carnivore(arvoSijainti(), 8 + arpa.nextInt(8));
+    }
+
+    public Elio luoKasvissyoja() {
+        return new Herbivori(arvoSijainti(), 4 + arpa.nextInt(4));
+    }
+
+    public Elio luoKasvi() {
+        return new Kasvi(arvoSijainti(), 2 + arpa.nextInt(2));
+    }
+
+    private Piste arvoSijainti() {
+        return new Piste(arpa.nextInt(maailmanLeveys) + 1,
+                arpa.nextInt(maailmanKorkeus) + 1);
     }
 }

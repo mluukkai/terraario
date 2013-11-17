@@ -18,7 +18,7 @@ public class Ikkuna implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Terraario");
-        frame.setPreferredSize(new Dimension(400, 400));
+        frame.setPreferredSize(new Dimension(maailma.leveys(), maailma.korkeus()));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(false);

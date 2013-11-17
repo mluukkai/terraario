@@ -1,37 +1,40 @@
 
-import terraario.Terrario;
+import terraario.Terraario;
 
 public class Main {
 
     public static void main(String[] args) {
-        Jumala jumala = new Jumala();
+        int leveys = 800;
+        int korkeus = 600;
 
-        Terrario.kaynnista(800, 600, 5);
+        Jumala jumala = new Jumala(leveys, korkeus);
 
-        Terrario.lisaa(jumala.luoKasvi());
-        Terrario.lisaa(jumala.luoKasvi());
-        Terrario.lisaa(jumala.luoKasvi());
+        Terraario.kaynnista(leveys, korkeus, 10);
+
+        Terraario.lisaa(jumala.luoKasvi());
+        Terraario.lisaa(jumala.luoKasvi());
+        Terraario.lisaa(jumala.luoKasvi());
 
         for (int i = 0; i < 100; i++) {
-            Terrario.elele();
+            Terraario.elele();
         }
 
-        Terrario.lisaa(jumala.luoKasvissyoja());
+        Terraario.lisaa(jumala.luoKasvissyoja());
 
         while (true) {
             if (Math.random() < 0.05) {
-                Terrario.lisaa(jumala.luoKasvi());
+                Terraario.lisaa(jumala.luoKasvi());
             }
 
             if (Math.random() < 0.01) {
-                Terrario.lisaa(jumala.luoKasvissyoja());
+                Terraario.lisaa(jumala.luoKasvissyoja());
             }
 
             if (Math.random() < 0.01) {
-                Terrario.lisaa(jumala.luoLihansyoja());
+                Terraario.lisaa(jumala.luoLihansyoja());
             }
 
-            Terrario.elele();
+            Terraario.elele();
 
         }
 
