@@ -1,5 +1,6 @@
 package terraario.eliot;
 
+import java.awt.Color;
 import terraario.Maailma;
 import terraario.Piste;
 
@@ -16,5 +17,10 @@ public class Kasvi extends Elio {
         }
         
         setPaino(getPaino() * 1.001);
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.GREEN;
     }
 }

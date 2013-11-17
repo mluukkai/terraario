@@ -8,10 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.util.List;
 import javax.swing.JPanel;
 import terraario.eliot.Elio;
-import terraario.eliot.Herbivori;
-import terraario.eliot.Kasvi;
 import terraario.Maailma;
-import terraario.eliot.Carnivore;
 
 public class Piirtoalusta extends JPanel {
 
@@ -25,17 +22,7 @@ public class Piirtoalusta extends JPanel {
 
     private void piirraEliot(Graphics graphics, List<Elio> eliot) {
         for (Elio elio : eliot) {
-            if (elio instanceof Kasvi) {
-                graphics.setColor(Color.GREEN);
-            }
-
-            if (elio instanceof Herbivori) {
-                graphics.setColor(Color.BLUE);
-            }
-
-            if (elio instanceof Carnivore) {
-                graphics.setColor(Color.RED);
-            }
+            graphics.setColor(elio.getColor());
 
             graphics.fillOval(
                     (int) (elio.getSijainti().getX() - elio.getPaino() / 2),

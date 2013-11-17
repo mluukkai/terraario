@@ -1,5 +1,6 @@
 package terraario.eliot;
 
+import java.awt.Color;
 import terraario.Maailma;
 import terraario.Piste;
 
@@ -24,8 +25,8 @@ public class Carnivore extends Herbivori {
             if (!(elio instanceof Herbivori)) {
                 continue;
             }
-            
-            if(elio == this) {
+
+            if (elio == this) {
                 continue;
             }
 
@@ -62,4 +63,8 @@ public class Carnivore extends Herbivori {
         }
     }
 
+    @Override
+    public Color getColor() {
+        return Color.RED;
+    }
 }

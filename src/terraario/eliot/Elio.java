@@ -1,5 +1,6 @@
 package terraario.eliot;
 
+import java.awt.Color;
 import terraario.Maailma;
 import terraario.Piste;
 
@@ -14,6 +15,8 @@ public abstract class Elio {
     }
 
     public abstract void elele(Maailma maailma);
+
+    public abstract Color getColor();
 
     public void syo(Elio elio) {
         this.paino += elio.getPaino() / 4;
@@ -31,4 +34,5 @@ public abstract class Elio {
     public void setPaino(double paino) {
         this.paino = paino;
     }
+
 }

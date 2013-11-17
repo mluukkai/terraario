@@ -1,5 +1,6 @@
 package terraario.eliot;
 
+import java.awt.Color;
 import terraario.Maailma;
 import terraario.Piste;
 
@@ -61,6 +62,10 @@ public class Herbivori extends Elio {
         } else if (lahin.getSijainti().getY() > getSijainti().getY()) {
             getSijainti().setY(getSijainti().getY() + 1);
         }
+    }
 
+    @Override
+    public Color getColor() {
+        return Color.BLUE;
     }
 }
